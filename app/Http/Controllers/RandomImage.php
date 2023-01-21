@@ -11,10 +11,10 @@ class RandomImage extends Controller
     public function randomImage()
     {
 
-        $random_images = Image::inRandomOrder()->take(5);
-        return [
-            "images" => $random_images,
-            "success" => true,
-        ];
+        $random_images = Image::inRandomOrder()->take(5)->get();
+        // dd($random_images);
+        foreach ($random_images as $image) {
+            return response()->file(storage_path('app/public/' . $image->image));
+        }
     }
 }

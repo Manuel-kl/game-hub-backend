@@ -15,7 +15,7 @@ class ImageSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 1; $i <= 122; $i++) {
+        for ($i = 1; $i <= 200; $i++) {
             $image = new Image();
             $image->image = $i . ".png";
 
