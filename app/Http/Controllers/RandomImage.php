@@ -16,8 +16,5 @@ class RandomImage extends Controller
                 'images' => $random_images,
                 'success' => true,
             ];
-        // foreach ($random_images as $image) {
-        //     return response()->file(storage_path('app/public/' . $image->image));
-        // }
     }
 }
