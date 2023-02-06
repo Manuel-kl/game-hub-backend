@@ -15,7 +15,7 @@ class GamesController extends Controller
             'http://api.football-data.org/v4/competitions/PL/scorers',
             [
                 'headers' => [
-                    'X-Auth-Token' => 'e9e00611e0ab46598a0b9747dcbd8dc7',
+                    'X-Auth-Token' => env('X_AUTH_TOKEN'),
                 ],
                 'query' => [
                     'limit' => 253,
@@ -24,11 +24,26 @@ class GamesController extends Controller
         );
         $scorers = json_decode($response->getBody());
         return [
-            'scorers' => $scorers];
+            'scorers' => $scorers,
+        ];
     }
     public function getResults()
     {
-        return view('results');
+        $client = new Client();
+        $response = $client->request(
+            'GET',
+            'http://api.football-data.org/v4/competitions/PL/scorers',
+            [
+                'headers' => [
+                    'X-Auth-Token' => env('X_AUTH_TOKEN'),
+                ],
+            ],
+
+        );
+        $results = json_decode($response->getBody());
+        return [
+            'results' => $results,
+        ];
     }
     public function getTable()
     {
@@ -38,7 +53,7 @@ class GamesController extends Controller
             'http://api.football-data.org/v4/competitions/PL/standings',
             [
                 'headers' => [
-                    'X-Auth-Token' => 'e9e00611e0ab46598a0b9747dcbd8dc7',
+                    'X-Auth-Token' => env('X_AUTH_TOKEN'),
                 ],
             ]
         );
@@ -55,7 +70,7 @@ class GamesController extends Controller
             'http://api.football-data.org/v4/competitions/PL/matches',
             [
                 'headers' => [
-                    'X-Auth-Token' => 'e9e00611e0ab46598a0b9747dcbd8dc7',
+                    'X-Auth-Token' => env('X_AUTH_TOKEN'),
                 ],
             ]
         );
