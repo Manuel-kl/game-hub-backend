@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\GamesController;
-use App\Http\Controllers\RandomImage;
 use Illuminate\Http\Request;
+use App\Http\Controllers\RandomImage;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GamesController;
+use App\Http\Controllers\RandomQuoteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,4 +25,5 @@ Route::get('/image', [RandomImage::class, 'randomImage']);
 Route::get('/table', [GamesController::class, 'getTable']);
 Route::get('/scorers', [GamesController::class, 'getScorers']);
 Route::get('/games', [GamesController::class, 'getGames']);
-Route::get('/results', [GamesController::class, 'getResults']);
+
+Route::get('/quote', [RandomQuoteController::class, 'getQuote']);

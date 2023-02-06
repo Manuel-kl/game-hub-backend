@@ -27,24 +27,7 @@ class GamesController extends Controller
             'scorers' => $scorers,
         ];
     }
-    public function getResults()
-    {
-        $client = new Client();
-        $response = $client->request(
-            'GET',
-            'http://api.football-data.org/v4/competitions/PL/scorers',
-            [
-                'headers' => [
-                    'X-Auth-Token' => env('X_AUTH_TOKEN'),
-                ],
-            ],
 
-        );
-        $results = json_decode($response->getBody());
-        return [
-            'results' => $results,
-        ];
-    }
     public function getTable()
     {
         $client = new Client();
