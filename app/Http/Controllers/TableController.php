@@ -4,111 +4,110 @@ namespace App\Http\Controllers;
 
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
-use App\Http\Requests\IDRequest;
 
-class GamesController extends Controller
+class TableController extends Controller
 {
 
-    public function getPLGames()
+    public function getPLTable()
     {
         $client = new Client();
         $response = $client->request(
             'GET',
-            'http://api.football-data.org/v4/competitions/PL/matches',
+            'http://api.football-data.org/v4/competitions/PL/standings',
             [
                 'headers' => [
                     'X-Auth-Token' => env('X_AUTH_TOKEN'),
                 ],
             ]
         );
-        $games = json_decode($response->getBody());
+        $table = json_decode($response->getBody());
         return [
-            'games' => $games,
+            'table' => $table,
         ];
     }
-    public function getBL1Games()
+    public function getCLTable()
     {
         $client = new Client();
         $response = $client->request(
             'GET',
-            'http://api.football-data.org/v4/competitions/BL1/matches',
+            'http://api.football-data.org/v4/competitions/CL/standings',
             [
                 'headers' => [
                     'X-Auth-Token' => env('X_AUTH_TOKEN'),
                 ],
             ]
         );
-        $games = json_decode($response->getBody());
+        $table = json_decode($response->getBody());
         return [
-            'games' => $games,
+            'table' => $table,
         ];
     }
-    public function getSAGames()
+    public function getBL1Table()
     {
         $client = new Client();
         $response = $client->request(
             'GET',
-            'http://api.football-data.org/v4/competitions/SA/matches',
+            'http://api.football-data.org/v4/competitions/BL1/standings',
             [
                 'headers' => [
                     'X-Auth-Token' => env('X_AUTH_TOKEN'),
                 ],
             ]
         );
-        $games = json_decode($response->getBody());
+        $table = json_decode($response->getBody());
         return [
-            'games' => $games,
+            'table' => $table,
         ];
     }
-    public function getFL1Games()
+    public function getSATable()
     {
         $client = new Client();
         $response = $client->request(
             'GET',
-            'http://api.football-data.org/v4/competitions/FL1/matches',
+            'http://api.football-data.org/v4/competitions/SA/standings',
             [
                 'headers' => [
                     'X-Auth-Token' => env('X_AUTH_TOKEN'),
                 ],
             ]
         );
-        $games = json_decode($response->getBody());
+        $table = json_decode($response->getBody());
         return [
-            'games' => $games,
+            'table' => $table,
         ];
     }
-    public function getELCGames()
+    public function getELCTable()
     {
         $client = new Client();
         $response = $client->request(
             'GET',
-            'http://api.football-data.org/v4/competitions/ELC/matches',
+            'http://api.football-data.org/v4/competitions/ELC/standings',
             [
                 'headers' => [
                     'X-Auth-Token' => env('X_AUTH_TOKEN'),
                 ],
             ]
         );
-        $games = json_decode($response->getBody());
+        $table = json_decode($response->getBody());
         return [
-            'games' => $games,
+            'table' => $table,
         ];
     }
-    public function getCLGames()
+    public function getFL1Table()
     {
         $client = new Client();
         $response = $client->request(
             'GET',
-            'http://api.football-data.org/v4/competitions/CL/matches',
+            'http://api.football-data.org/v4/competitions/FL1/standings',
             [
                 'headers' => [
                     'X-Auth-Token' => env('X_AUTH_TOKEN'),
                 ],
             ]
         );
-        $games = json_decode($response->getBody());
+        $table = json_decode($response->getBody());
         return [
-            'games' => $games,
+            'table' => $table,
         ];
     }
 }
